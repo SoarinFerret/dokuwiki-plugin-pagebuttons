@@ -1,16 +1,12 @@
-# Delete Page Button Plugin for DokuWiki
+# Page Buttons Plugin for DokuWiki
 
-The plugin adds a _Delete page_ button to DokuWiki's 
-[PageMenu](https://www.dokuwiki.org/devel:menus).
+The plugin adds a few Page Menu buttons to perform useful actions:
 
-This provides a simpler, quicker and more intuitive way for users to 
-delete wiki pages, compared to the 
-[documented page deletion method](https://www.dokuwiki.org/page#delete_a_page).
+* _Delete Page_ - Deletes the current page
+* _New Page_ - Creates a 'subpage' under the current namespace
+* _New Folder_ - Creates a 'subfolder' under the current namespace
 
 ![Screenshot](images/screenshot.png)
-
-Copyright (c) 2020 Damien Regad <dregad@mantisbt.org>
-
 
 ## License
 
@@ -24,16 +20,11 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
-
 ## Installation and Configuration
 
-Please refer to https://www.dokuwiki.org/plugin:deletepagebutton for information
-on how to install and configure this plugin in DokuWiki.
-
 If you install this plugin manually, make sure it is installed in
-`lib/plugins/deletepagebutton/` - if the folder is called differently,
+`lib/plugins/pagebuttons/` - if the folder is called differently,
 it will not work!
-
 
 ## Compatibility
 
@@ -45,12 +36,14 @@ Earlier releases are not supported.
 ## Support
 
 Source code and support for this plugin can be found at
-https://github.com/dregad/dokuwiki-plugin-deletepagebutton
+https://github.com/SoarinFerret/dokuwiki-plugin-pagebuttons
 
 ## Credits
 
-Icon: https://materialdesignicons.com/icon/trash-can-outline
+Icons: 
+* https://materialdesignicons.com/icon/trash-can-outline
+* https://materialdesignicons.com/icon/folder-plus-outline
+* https://materialdesignicons.com/icon/file-plus-outline
 
-I first thought I could adapt 
-[this old plugin](https://github.com/caillou/dokuwiki-plugin-delete)
-but I ended up restarting from scratch.
+
+Built off the work provided here: https://github.com/dregad/dokuwiki-plugin-deletepagebutton
