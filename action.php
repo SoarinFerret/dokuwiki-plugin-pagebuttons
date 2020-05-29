@@ -53,6 +53,7 @@ class action_plugin_pagebuttons extends DokuWiki_Action_Plugin {
 
         if (
             $event->data['view'] !== 'page'
+            || $this->getConf('hideDelete')
             || !$this->canDelete($ID)
         ) {
             return;
@@ -73,6 +74,7 @@ class action_plugin_pagebuttons extends DokuWiki_Action_Plugin {
 
         if (
             $event->data['view'] !== 'page'
+            || $this->getConf('hideNewPage')
             || !(substr_compare($ID, ":start", -strlen(":start")) === 0)
         ) {
             return;
@@ -93,6 +95,7 @@ class action_plugin_pagebuttons extends DokuWiki_Action_Plugin {
 
         if (
             $event->data['view'] !== 'page'
+            || $this->getConf('hideNewFolder')
             || !(substr_compare($ID, ":start", -strlen(":start")) === 0)
         ) {
             return;
