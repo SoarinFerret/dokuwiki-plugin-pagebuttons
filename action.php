@@ -35,10 +35,23 @@ class action_plugin_pagebuttons extends DokuWiki_Action_Plugin {
      * @param Doku_Event_Handler $controller The plugin controller
      */
     public function register(Doku_Event_Handler $controller) {
+        $controller->register_hook('DOKUWIKI_STARTED', 'AFTER', $this, 'addjsinfo');
         $controller->register_hook('MENU_ITEMS_ASSEMBLY', 'AFTER', $this, 'addNewPageButton' );
         $controller->register_hook('MENU_ITEMS_ASSEMBLY', 'AFTER', $this, 'addNewFolderButton' );
         $controller->register_hook('MENU_ITEMS_ASSEMBLY', 'AFTER', $this, 'addDeleteButton' );
         $controller->register_hook('ACTION_ACT_PREPROCESS', 'BEFORE', $this, 'actionPage' );
+    }
+
+    
+     /**
+     * Adds details to JSINFO
+     *
+     */
+    function addjsinfo($event, $params){
+        global $JSINFO;
+        $JSINFO['plugin_pagebuttons'] = array(
+            'usePrompt' => $this->getConf('usePrompt')
+        );
     }
 
     /**
@@ -75,6 +88,7 @@ class action_plugin_pagebuttons extends DokuWiki_Action_Plugin {
         if (
             $event->data['view'] !== 'page'
             || $this->getConf('hideNewPage')
+            || !page_exists($ID)
             || !(substr_compare($ID, ":start", -strlen(":start")) === 0)
         ) {
             return;
@@ -96,6 +110,7 @@ class action_plugin_pagebuttons extends DokuWiki_Action_Plugin {
         if (
             $event->data['view'] !== 'page'
             || $this->getConf('hideNewFolder')
+            || !page_exists($ID)
             || !(substr_compare($ID, ":start", -strlen(":start")) === 0)
         ) {
             return;
