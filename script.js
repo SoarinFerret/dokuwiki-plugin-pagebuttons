@@ -73,7 +73,7 @@ jQuery(function() {
     jQuery('.newfolderbutton a').click(function(f) {
         f.preventDefault();
 
-        var pre_url = window.location.href.substring(0, window.location.href.indexOf(JSINFO['id'])) + JSINFO['id'].replace(":start","");
+        var pre_url = window.location.href.substring(0, window.location.href.indexOf(JSINFO['id'])) + JSINFO['namespace'];
         
         if(usePrompt){
             var page = window.prompt(LANG.plugins.pagebuttons.newfolder_prompt);
@@ -128,7 +128,7 @@ jQuery(function() {
     jQuery('.newpagebutton a').click(function(p) {
         p.preventDefault();
         
-        var pre_url = window.location.href.substring(0, window.location.href.indexOf(JSINFO['id'])) + JSINFO['id'].replace(":start","");
+        var pre_url = window.location.href.substring(0, window.location.href.indexOf(JSINFO['id'])) + JSINFO['namespace'];
 
         if(usePrompt){
             var page = window.prompt(LANG.plugins.pagebuttons.newpage_prompt);
