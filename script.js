@@ -19,7 +19,7 @@ jQuery(function() {
         var usePrompt = JSINFO['plugin_pagebuttons']['usePrompt'];
     }
 
-    jQuery('.deletepagebutton a').click(function(d) {
+    jQuery('.plugin_pagebuttons_deletepage').click(function(d) {
         d.preventDefault();
 
         var submit_url = this.href;
@@ -70,7 +70,7 @@ jQuery(function() {
         }
     });
 
-    jQuery('.newfolderbutton a').click(function(f) {
+    jQuery('.plugin_pagebuttons_newfolder').click(function(f) {
         f.preventDefault();
 
         var pre_url = window.location.href.substring(0, window.location.href.indexOf(JSINFO['id'])) + JSINFO['namespace'];
@@ -125,7 +125,7 @@ jQuery(function() {
         }
     });
 
-    jQuery('.newpagebutton a').click(function(p) {
+    jQuery('.plugin_pagebuttons_newpage').click(function(p) {
         p.preventDefault();
         
         var pre_url = window.location.href.substring(0, window.location.href.indexOf(JSINFO['id'])) + JSINFO['namespace'];
