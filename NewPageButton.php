@@ -39,4 +39,13 @@ class NewPageButton extends AbstractItem {
         //return $plugin->getLang('newpage_menu_item');
     }
 
+    public function getLinkAttributes($classprefix = 'menuitem ') {
+        $attr = parent::getLinkAttributes($classprefix);
+        if (empty($attr['class'])) {
+            $attr['class'] = '';
+        }
+        $attr['class'] .= ' plugin_pagebuttons_newpage ';
+        return $attr;
+    }
+
 }

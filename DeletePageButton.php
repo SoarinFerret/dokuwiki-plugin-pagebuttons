@@ -46,4 +46,13 @@ class DeletePageButton extends AbstractItem {
         //return $plugin->getLang('delete_menu_item');
     }
 
+    public function getLinkAttributes($classprefix = 'menuitem ') {
+        $attr = parent::getLinkAttributes($classprefix);
+        if (empty($attr['class'])) {
+            $attr['class'] = '';
+        }
+        $attr['class'] .= ' plugin_pagebuttons_deletepage ';
+        return $attr;
+    }
+
 }
