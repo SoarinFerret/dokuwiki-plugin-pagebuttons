@@ -72,7 +72,7 @@ class action_plugin_pagebuttons extends DokuWiki_Action_Plugin {
             return;
         }
 
-        array_splice($event->data['items'], -1, 0, array(new DeletePageButton()));
+        array_splice($event->data['items'], -1, 0, array(new DeletePageButton($this->getLang('delete_menu_item'))));
     }
 
     /**
@@ -94,7 +94,7 @@ class action_plugin_pagebuttons extends DokuWiki_Action_Plugin {
             return;
         }
 
-        array_splice($event->data['items'], -1, 0, array(new NewPageButton()));
+        array_splice($event->data['items'], -1, 0, array(new NewPageButton($this->getLang('newpage_menu_item'))));
     }
 
     /**
@@ -116,7 +116,7 @@ class action_plugin_pagebuttons extends DokuWiki_Action_Plugin {
             return;
         }
 
-        array_splice($event->data['items'], -1, 0, array(new NewFolderButton()));
+        array_splice($event->data['items'], -1, 0, array(new NewFolderButton($this->getLang('newfolder_menu_item'))));
     }
 
     /**
