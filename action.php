@@ -49,8 +49,11 @@ class action_plugin_pagebuttons extends DokuWiki_Action_Plugin {
      */
     function addjsinfo($event, $params){
         global $JSINFO;
+        global $conf;
         $JSINFO['plugin_pagebuttons'] = array(
-            'usePrompt' => $this->getConf('usePrompt')
+            'usePrompt' => $this->getConf('usePrompt'),
+            'useslash' => $conf['useslash'],
+            'start' => $conf['start']
         );
     }
 
@@ -84,12 +87,13 @@ class action_plugin_pagebuttons extends DokuWiki_Action_Plugin {
      */
     public function addNewPageButton(Doku_Event $event) {
         global $ID;
+        global $conf;
 
         if (
             $event->data['view'] !== 'page'
             || $this->getConf('hideNewPage')
             || !page_exists($ID)
-            || ($this->getConf('onlyShowNewButtonsOnStart') && !(substr_compare($ID, ":start", -strlen(":start")) === 0))
+            || ($this->getConf('onlyShowNewButtonsOnStart') && !(substr_compare($ID, ":".$conf['start'], -strlen(":".$conf['start'])) === 0))
         ) {
             return;
         }
@@ -106,12 +110,13 @@ class action_plugin_pagebuttons extends DokuWiki_Action_Plugin {
      */
     public function addNewFolderButton(Doku_Event $event) {
         global $ID;
+        global $conf;
 
         if (
             $event->data['view'] !== 'page'
             || $this->getConf('hideNewFolder')
             || !page_exists($ID)
-            || ($this->getConf('onlyShowNewButtonsOnStart') && !(substr_compare($ID, ":start", -strlen(":start")) === 0))
+            || ($this->getConf('onlyShowNewButtonsOnStart') && !(substr_compare($ID, ":".$conf['start'], -strlen(":".$conf['start'])) === 0))
         ) {
             return;
         }
