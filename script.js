@@ -33,7 +33,6 @@ jQuery(function() {
                 window.location.href = submit_url;
             }
         }else{
-            console.log(submit_url);
             var $dialog = jQuery(
                 '<div><span>'
                 + LANG.plugins.pagebuttons.delete_confirm
@@ -50,7 +49,6 @@ jQuery(function() {
                         text: LANG.plugins.pagebuttons.btn_ok,
                         click: function () {
                             $dialog.dialog("close");
-                            console.log(submit_url);
                             window.location.href = submit_url
                         }
                     },
@@ -107,7 +105,6 @@ jQuery(function() {
                             var folder = document.getElementsByName("new_folder_name")[0].value;
                             $dialog.dialog("close");
                             var submit_url = pre_url + urlSeparator + folder + urlSeparator + start + "&do=edit";
-                            console.log(submit_url);
                             window.location.href = submit_url
                         }
                     },
@@ -164,7 +161,6 @@ jQuery(function() {
                             var newpage = document.getElementsByName("new_page_name")[0].value;
                             $dialog.dialog("close");
                             var submit_url = pre_url + urlSeparator + newpage + "&do=edit";
-                            console.log(submit_url);
                             window.location.href = submit_url
                         }
                     },
