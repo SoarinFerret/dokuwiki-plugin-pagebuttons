@@ -23,8 +23,9 @@ class NewFolderButton extends AbstractItem {
     protected $svg = __DIR__ . '/images/folder-plus-outline.svg';
 
     /** @inheritdoc */
-    public function __construct() {
+    public function __construct($label) {
         parent::__construct();
+        $this->label = $label;
         $this->params['sectok'] = getSecurityToken();
     }
 
@@ -34,9 +35,7 @@ class NewFolderButton extends AbstractItem {
      * @return string
      */
     public function getLabel() {
-        $plugin = plugin_load('action', $this->type);
-        return "New Folder";
-        //return $plugin->getLang('newfolder_menu_item');
+        return $this->label;
     }
 
     public function getLinkAttributes($classprefix = 'menuitem ') {

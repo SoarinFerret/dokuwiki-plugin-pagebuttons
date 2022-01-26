@@ -30,8 +30,9 @@ class DeletePageButton extends AbstractItem {
     protected $svg = __DIR__ . '/images/trash-can-outline.svg';
 
     /** @inheritdoc */
-    public function __construct() {
+    public function __construct($label) {
         parent::__construct();
+        $this->label = $label;
         $this->params['sectok'] = getSecurityToken();
     }
 
@@ -41,9 +42,7 @@ class DeletePageButton extends AbstractItem {
      * @return string
      */
     public function getLabel() {
-        $plugin = plugin_load('action', $this->type);
-        return "Delete Page";
-        //return $plugin->getLang('delete_menu_item');
+        return $this->label;
     }
 
     public function getLinkAttributes($classprefix = 'menuitem ') {
