@@ -104,7 +104,7 @@ jQuery(function() {
                         text: LANG.plugins.pagebuttons.btn_ok,
                         click: function () {
                             var folder = document.getElementsByName("new_folder_name")[0].value;
-                            folder = folder.replace(" ", sepchar);
+                            folder = folder.replace(/ +/g, sepchar);
                             folder = folder.replace(/:+/g, ":");
                             folder = folder.replace(/^:+/, "");
                             folder = folder.replace(/:+$/, "");
@@ -165,7 +165,7 @@ jQuery(function() {
                         text: LANG.plugins.pagebuttons.btn_ok,
                         click: function () {
                             var newpage = document.getElementsByName("new_page_name")[0].value;
-                            newpage = newpage.replace(" ", sepchar);
+                            newpage = newpage.replace(/ +/g, sepchar);
                             newpage = newpage.replace(/:+/g, ":");
                             newpage = newpage.replace(/^:+/, "");
                             newpage = newpage.replace(/:+$/, "");
