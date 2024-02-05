@@ -52,6 +52,7 @@ class action_plugin_pagebuttons extends DokuWiki_Action_Plugin {
         global $conf;
         $JSINFO['plugin_pagebuttons'] = array(
             'usePrompt' => $this->getConf('usePrompt'),
+            'sepchar' => $conf['sepchar'],
             'useslash' => $conf['useslash'],
             'start' => $conf['start']
         );

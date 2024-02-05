@@ -17,6 +17,7 @@ jQuery(function() {
     var usePrompt = 0;
     if(JSINFO && JSINFO['plugin_pagebuttons']){
         var usePrompt = JSINFO['plugin_pagebuttons']['usePrompt'];
+        var sepchar = JSINFO['plugin_pagebuttons']['sepchar'];
         var start = JSINFO['plugin_pagebuttons']['start'];
         var useSlash = JSINFO['plugin_pagebuttons']['useslash'];
         var urlSeparator = useSlash ? "/" : ":";
@@ -103,6 +104,11 @@ jQuery(function() {
                         text: LANG.plugins.pagebuttons.btn_ok,
                         click: function () {
                             var folder = document.getElementsByName("new_folder_name")[0].value;
+                            folder = folder.replace(" ", sepchar);
+                            folder = folder.replace(/:+/g, ":");
+                            folder = folder.replace(/^:+/, "");
+                            folder = folder.replace(/:+$/, "");
+                            folder = folder.replace(/:/g, urlSeparator);
                             $dialog.dialog("close");
                             var submit_url = pre_url + urlSeparator + folder + urlSeparator + start + "&do=edit";
                             window.location.href = submit_url
@@ -159,6 +165,11 @@ jQuery(function() {
                         text: LANG.plugins.pagebuttons.btn_ok,
                         click: function () {
                             var newpage = document.getElementsByName("new_page_name")[0].value;
+                            newpage = newpage.replace(" ", sepchar);
+                            newpage = newpage.replace(/:+/g, ":");
+                            newpage = newpage.replace(/^:+/, "");
+                            newpage = newpage.replace(/:+$/, "");
+                            newpage = newpage.replace(/:/g, urlSeparator);
                             $dialog.dialog("close");
                             var submit_url = pre_url + urlSeparator + newpage + "&do=edit";
                             window.location.href = submit_url
