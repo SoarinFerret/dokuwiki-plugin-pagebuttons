@@ -17,9 +17,21 @@ jQuery(function() {
     var usePrompt = 0;
     if(JSINFO && JSINFO['plugin_pagebuttons']){
         var usePrompt = JSINFO['plugin_pagebuttons']['usePrompt'];
+        var sepchar = JSINFO['plugin_pagebuttons']['sepchar'];
         var start = JSINFO['plugin_pagebuttons']['start'];
         var useSlash = JSINFO['plugin_pagebuttons']['useslash'];
         var urlSeparator = useSlash ? "/" : ":";
+    }
+
+    function _sanitize_pagename(name) {
+        name = name.trim()
+                   .toLowerCase()
+                   .replace(/[ ?#$&%.]+/g, sepchar)
+                   .replace(/:+/g, ":")
+                   .replace(/^[:_]+/, "")
+                   .replace(/[:_]+$/, "")
+                   .replace(/:/g, urlSeparator);
+        return name
     }
 
     jQuery('.plugin_pagebuttons_deletepage').click(function(d) {
@@ -104,7 +116,7 @@ jQuery(function() {
                         click: function () {
                             var folder = document.getElementsByName("new_folder_name")[0].value;
                             $dialog.dialog("close");
-                            var submit_url = pre_url + urlSeparator + folder + urlSeparator + start + "&do=edit";
+                            var submit_url = pre_url + urlSeparator + _sanitize_pagename(folder) + urlSeparator + start + "&do=edit";
                             window.location.href = submit_url
                         }
                     },
@@ -160,7 +172,7 @@ jQuery(function() {
                         click: function () {
                             var newpage = document.getElementsByName("new_page_name")[0].value;
                             $dialog.dialog("close");
-                            var submit_url = pre_url + urlSeparator + newpage + "&do=edit";
+                            var submit_url = pre_url + urlSeparator + _sanitize_pagename(newpage) + "&do=edit";
                             window.location.href = submit_url
                         }
                     },
