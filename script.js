@@ -26,7 +26,7 @@ jQuery(function() {
     function _sanitize_pagename(name) {
         name = name.trim()
                    .toLowerCase()
-                   .replace(/[ ?#$&%.\[\]=+,\\]+/g, sepchar)
+                   .replace(/[ ?#$&%.\[\]=+,\\<>'"~`|]+/g, sepchar)
                    .replace(/:+/g, ":")
                    .replace(/^[:_]+/, "")
                    .replace(/[:_]+$/, "")
