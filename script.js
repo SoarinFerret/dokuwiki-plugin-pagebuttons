@@ -26,12 +26,14 @@ jQuery(function() {
     function _sanitize_pagename(name) {
         name = name.trim()
                    .toLowerCase()
-                   .replace(/[ ?#$&%.]+/g, sepchar)
+                   .replace(/[ ?#$&%.\[\]=+,\\]+/g, sepchar)
                    .replace(/:+/g, ":")
                    .replace(/^[:_]+/, "")
                    .replace(/[:_]+$/, "")
                    .replace(/:/g, urlSeparator);
-        return name
+        
+        if (name == "") return start;
+        else return name;
     }
 
     jQuery('.plugin_pagebuttons_deletepage').click(function(d) {
